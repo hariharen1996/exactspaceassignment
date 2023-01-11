@@ -1,0 +1,31 @@
+.bg-colors {
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.light-blue {
+  background-color: lightblue;
+}
+
+.green {
+  background-color: green;
+}
