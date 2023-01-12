@@ -60,8 +60,30 @@ export const FormContainer = styled.div`
   margin-left: 10px;
   margin-right: 15px;
   width: 75%;  
-  
 `
+
+export const Emoji = styled.div`
+  background: none;
+  border: none;
+  outline: none;
+  position: fixed;
+  top: 94%;
+  left: 70%;
+  cursor: pointer;
+  @media screen and (min-width: 1000px) {
+    top: 94%;
+    left: 74%;
+  }
+  @media screen and (min-width: 1200px) {
+    top: 95%;
+    left: 74%;
+  }
+  @media screen and (min-width: 1300px) {
+    top: 95%;
+    left: 74%;
+  }
+`
+
 export const Input = styled.input`
   width: 100%;
   border: 1px solid #475569;
@@ -86,4 +108,9 @@ export const MessageItem = styled.ul`
 export const Hr = styled.hr`
   background-color: #606060;
   width: 95%;
+`
+
+export const EmojiBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `

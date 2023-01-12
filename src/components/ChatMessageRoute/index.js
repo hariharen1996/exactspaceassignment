@@ -2,6 +2,8 @@ import {useState} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
 import {FiUsers} from 'react-icons/fi'
+import {BsEmojiSmile} from 'react-icons/bs'
+import Picker from 'emoji-picker-react'
 import {
   MenuContainer,
   ChatContainer,
@@ -18,6 +20,8 @@ import {
   MessageContainer,
   MessageItem,
   Hr,
+  Emoji,
+  EmojiBox,
 } from './StyledChat'
 import MessageRoute from '../MessageRoute'
 
@@ -34,7 +38,17 @@ const backgroundColors = [
 
 const ChatMessageRoute = ({menu, showMenu}) => {
   const [message, setMessage] = useState('')
+  const [emoji, setEmoji] = useState(false)
   const [data, setData] = useState([])
+
+  const showEmoji = () => {
+    setEmoji(prevState => !prevState)
+  }
+
+  const displayEmoji = em => {
+    setMessage(prevState => prevState + em.emoji)
+    setEmoji(false)
+  }
 
   const changeMessage = event => {
     setMessage(event.target.value)
@@ -52,12 +66,14 @@ const ChatMessageRoute = ({menu, showMenu}) => {
       name,
       message,
       colors,
+      count: 0,
       date: new Date(),
     }
 
     setData([...data, newData])
     setMessage('')
   }
+
   return (
     <>
       <MenuContainer>
@@ -84,6 +100,7 @@ const ChatMessageRoute = ({menu, showMenu}) => {
             ))}
           </MessageItem>
         </MessageContainer>
+
         <FormContainer>
           <Form onSubmit={submitForm}>
             <Input
@@ -93,7 +110,13 @@ const ChatMessageRoute = ({menu, showMenu}) => {
               onChange={changeMessage}
             />
           </Form>
+          <Emoji type="button" onClick={showEmoji} menu={menu}>
+            <BsEmojiSmile size={20} className="emoji" />
+          </Emoji>
         </FormContainer>
+        <EmojiBox>
+          {emoji ? <Picker onEmojiClick={displayEmoji} theme="dark" /> : ''}
+        </EmojiBox>
       </ChatMessages>
     </>
   )

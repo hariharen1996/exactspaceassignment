@@ -42,3 +42,27 @@ export const MessageText = styled.p`
   font-size: 15px;
   font-family: 'Roboto';
 `
+
+export const LikeCount = styled.span`
+  font-size: 16px;
+  color: #181818;
+`
+
+export const LikeBtn = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`
+
+export const LikeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Messages = styled.div`
+  display: flex;
+  gap: 20px;
+  width: 100%;
+`

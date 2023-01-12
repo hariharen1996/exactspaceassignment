@@ -1,4 +1,6 @@
+import {useState} from 'react'
 import {formatDistanceToNow} from 'date-fns'
+import {FcLike} from 'react-icons/fc'
 import {
   MessageLists,
   MsgHeadingContainer,
@@ -7,12 +9,22 @@ import {
   Date,
   MessageDescription,
   MessageText,
+  LikeCount,
+  LikeBtn,
+  LikeContainer,
+  Messages,
 } from './StyledMessage'
 import './index.css'
 
 const MessageRoute = props => {
+  const [count, setCount] = useState(0)
   const {msgData} = props
   const date = formatDistanceToNow(msgData.date)
+
+  const handleLike = () => {
+    setCount(prevState => prevState + 1)
+  }
+
   return (
     <>
       <MessageLists key={msgData.id}>
@@ -27,9 +39,18 @@ const MessageRoute = props => {
             </sub>
           </MsgName>
         </MsgHeadingContainer>
-        <MessageDescription>
-          <MessageText>{msgData.message}</MessageText>
-        </MessageDescription>
+        <Messages>
+          <MessageDescription>
+            <MessageText>{msgData.message}</MessageText>
+          </MessageDescription>
+
+          <LikeContainer>
+            <LikeBtn type="button" onClick={handleLike}>
+              <FcLike size={23} />
+            </LikeBtn>
+            <LikeCount>{count}</LikeCount>
+          </LikeContainer>
+        </Messages>
       </MessageLists>
     </>
   )
